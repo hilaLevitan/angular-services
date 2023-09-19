@@ -1,0 +1,59 @@
+<form (ngSubmit)="add()">
+  <input
+    type="text"
+    placeholder="recipe name"
+    name="rname"
+    [(ngModel)]="recipe.RecipeName"
+    (onkeyup)="printTo()"
+  /><br />
+  <input
+    type="text"
+    placeholder="pic"
+    name="pic"
+    [(ngModel)]="recipe.Pic"
+  /><br />
+  <input
+    type="text"
+    placeholder="level"
+    name="level"
+    [(ngModel)]="recipe.Level"
+  /><br />
+  <input
+    type="number"
+    placeholder="time"
+    name="time"
+    [(ngModel)]="recipe.Time"
+  /><br />
+  <!-- <input
+    type="number"
+    placeholder="user id"
+    name="userId"
+    [(ngModel)]="recipe.UserId"
+  /> -->
+  <label for="cars">user : </label>
+
+  <select id="cars" name="userId" [(ngModel)]="recipe.UserId">
+    <option *ngFor="let user of lUsers" [value]="user.UserId">
+      {{ user.FirstName }}
+    </option>
+  </select>
+  <br />
+  <input type="submit" />
+</form>
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of lRecipe">
+      <td>{{ item.RecipeId }}</td>
+      <td>{{ item.RecipeName }}</td>
+      <td>{{ item.Pic }}</td>
+      <td><button (click)="edit(item.RecipeId)">edit</button></td>
+      <td><button (click)="del(item.RecipeId)">delete</button></td>
+    </tr>
+  </tbody>
+</table>
